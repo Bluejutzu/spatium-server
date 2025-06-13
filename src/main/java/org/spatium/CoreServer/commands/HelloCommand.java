@@ -1,9 +1,8 @@
-package org.spatium.testplugin.commands;
+package org.spatium.CoreServer.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.CommandExecutor;
-import org.jetbrains.annotations.NotNull;
 
 public class HelloCommand implements CommandExecutor {
     @Override

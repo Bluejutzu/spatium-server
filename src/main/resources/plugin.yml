@@ -1,8 +1,11 @@
 name: java-plugin
 version: '1.0-SNAPSHOT'
-main: org.spatium.testplugin.ExamplePlugin
+main: org.spatium.CoreServer.Core
 api-version: '1.21'
 commands:
   hello:
     description: Say Hello
     usage: /hello
+  dbtest:
+    description: Tests Discord role linkage
+    usage: /dbtest <uuid>

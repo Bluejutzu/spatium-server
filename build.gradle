@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id("com.gradleup.shadow") version "9.0.0-beta15"
     id("xyz.jpenilla.run-paper") version "2.3.1"
 }
 
@@ -8,6 +9,7 @@ version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    gradlePluginPortal()
     maven {
         name = "papermc-repo"
         url = "https://repo.papermc.io/repository/maven-public/"
@@ -20,6 +22,11 @@ repositories {
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21.4-R0.1-SNAPSHOT")
+
+    implementation('org.postgresql:postgresql:42.7.7')
+    implementation('redis.clients:jedis:5.1.0')
+    implementation('com.fasterxml.jackson.core:jackson-databind:2.17.0')
+
 }
 
 def targetJavaVersion = 21
@@ -38,15 +45,24 @@ tasks.withType(JavaCompile).configureEach {
     if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
         options.release.set(targetJavaVersion)
     }
-}
 
-tasks {
     runServer {
         // Configure the Minecraft version for our task.
         // This is the only required configuration besides applying the plugin.
         // Your plugin's jar (or shadowJar if present) will be used automatically.
         minecraftVersion("1.21.4")
         jvmArgs("-Dcom.mojang.eula.agree=true")
+    }
+
+    shadowJar {
+        archiveClassifier.set("")
+        mergeServiceFiles()
+
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/*.kotlin_module'
     }
 }
 
