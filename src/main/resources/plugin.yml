@@ -1,0 +1,8 @@
+name: java-plugin
+version: '1.0-SNAPSHOT'
+main: org.spatium.testplugin.ExamplePlugin
+api-version: '1.21'
+commands:
+  hello:
+    description: Say Hello
+    usage: /hello
