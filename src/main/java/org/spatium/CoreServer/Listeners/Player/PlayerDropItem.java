@@ -1,4 +1,4 @@
-package org.spatium.CoreServer.Listeners;
+package org.spatium.CoreServer.Listeners.Player;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,6 +14,11 @@ public class PlayerDropItem implements Listener {
 
     public PlayerDropItem(Core plugin) {
         this.plugin = plugin;
+        register(); // Register this class as an event listener
+    }
+
+    private void register() {
+        plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
     @EventHandler

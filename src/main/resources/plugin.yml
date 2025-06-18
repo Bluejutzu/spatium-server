@@ -2,6 +2,7 @@ name: java-plugin
 version: '1.0-SNAPSHOT'
 main: org.spatium.CoreServer.Core
 api-version: '1.21'
+depend: [ CoreProtect ]
 commands:
   hello:
     description: Say Hello
@@ -9,3 +10,18 @@ commands:
   dbtest:
     description: Tests Discord role linkage
     usage: /dbtest <uuid>
+  tpa:
+    description: Send a teleport request to another player
+    usage: /tpa <player>
+  tpaccept:
+    description: Accept the current teleport request
+    usage: /tpaccept
+  tpdeny:
+    description: Deny the current teleport request
+    usage: /tpdeny
+  link:
+    description: Link your Minecraft account with Discord
+    usage: /link <code>
+  unlink:
+    description: Remove the connection between your discord and Minecraft Account
+    usage: /unlink
