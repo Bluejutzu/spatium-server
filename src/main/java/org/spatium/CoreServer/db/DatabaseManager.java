@@ -133,8 +133,7 @@ public class DatabaseManager {
             redis.setex("link:d:" + discordId, 3600, json);
             return true;
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
-            return false;
+            throw new RuntimeException(e);
         }
     }
 
@@ -159,8 +158,7 @@ public class DatabaseManager {
             if (success) redis.del("verify:" + code);
             return success;
         } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+            throw new RuntimeException(e);
         }
     }
 
@@ -176,9 +174,12 @@ public class DatabaseManager {
                 return false;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
+            throw new RuntimeException(e);
         }
+    }
+
+    public JedisPooled getRedis() {
+        return redis;
     }
 
     public void close() {

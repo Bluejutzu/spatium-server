@@ -12,6 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.spatium.CoreServer.Listeners.Player.PlayerDropItem;
 import org.spatium.CoreServer.commands.DbTestCommand;
 import org.spatium.CoreServer.commands.HelloCommand;
+import org.spatium.CoreServer.commands.misc.AdvancementCheck;
 import org.spatium.CoreServer.commands.player.UnlinkCommand;
 import org.spatium.CoreServer.commands.player.VerifyCommand;
 import org.spatium.CoreServer.commands.util.TPAHandler;
@@ -97,6 +98,7 @@ public class Core extends JavaPlugin implements Listener {
         new TPAHandler(this);
         new VerifyCommand(this, db);
         new UnlinkCommand(this, db);
+        new AdvancementCheck(this, db);
         Objects.requireNonNull(getCommand("hello")).setExecutor(new HelloCommand());
         Objects.requireNonNull(getCommand("dbtest")).setExecutor(new DbTestCommand(this));
 

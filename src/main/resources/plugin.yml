@@ -4,6 +4,10 @@ main: org.spatium.CoreServer.Core
 api-version: '1.21'
 depend: [ CoreProtect ]
 commands:
+  advancement:
+    description: Advancement handler or something
+    usage: /<command> <action> <player> <key>
+    aliases: [ ac, achievement ]
   hello:
     description: Say Hello
     usage: /hello
