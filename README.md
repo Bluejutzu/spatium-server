@@ -33,3 +33,6 @@ A custom Minecraft Java plugin developed for learning purposes. Includes feature
 
 ## Run-Task
 This project uses the runServer task from [run-task](https://github.com/jpenilla/run-task) in development. 
+
+## License
+This project is open source and available under the [MIT License](License).
